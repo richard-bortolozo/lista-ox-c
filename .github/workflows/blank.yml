@@ -1,0 +1,24 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Compilar programa principal
+      run: gcc lista-ox.c -o lista-ox
+
+    - name: Executar programa principal
+      run: ./lista-ox X O X X X X O O X
+
+    - name: Compilar teste
+      run: gcc test_lista-ox.c -o test_lista-ox
+
+    - name: Executar teste
+      run: ./test_lista-ox
